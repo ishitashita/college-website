@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albatross University Registration</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #06555f, #b2cdca);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            height: 90vh;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+           
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+            opacity: 0;
+            position: relative;
+            animation: fadeIn 0.8s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .registration-end {
+            background-color: #e0f7fa;
+            color: #006064;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        form input,
+        form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border 0.3s, box-shadow 0.3s;
+            font-size: 16px;
+        }
+
+        form input:focus,
+        form select:focus {
+            border-color: #00bcd4;
+            box-shadow: 0 0 8px rgba(0, 188, 212, 0.5);
+            outline: none;
+        }
+
+        form input[type="submit"] {
+            background-color: #00bcd4;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 14px;
+            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 5px;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #009688;
+            transform: scale(1.05);
+        }
+
+        .dob-group {
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h3>APPLY TODAY FOR</h3>
+        <h1>Albatross University</h1>
+        <div class="registration-end">
+            Registration End Date (Phase-II) - 12 November 2024
+        </div>
+        <form id="registration-form">
+            <input type="text" id="name" placeholder="Enter your Name" required>
+            <input type="email" id="email" placeholder="Enter your Email Address" required>
+            <input type="tel" id="phone" placeholder="Enter Mobile No" required pattern="[0-9]{10}">
+            <input type="text" id="city" placeholder="Type your city & state" required>
+
+            <div class="select-group">
+                <select id="discipline" required>
+                    <option value="" disabled selected>Select Discipline</option>
+                    <option value="science">Science</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="arts">Arts</option>
+                    <option value="engineering">Engineering</option>
+                    <option value="medicine">Medicine</option>
+                    <option value="legal studies">Legal Studies</option>
+                    <option value="design">Design & Architecture</option>
+                </select>
+                <select id="program" required>
+                    <option value="" disabled selected>Select Program</option>
+                    <option value="bachelor">Bachelor's Degree</option>
+                    <option value="master">Master's Degree</option>
+                    <option value="phd">PhD</option>
+                    <option value="diploma">Diploma</option>
+                    <option value="certificate">Certificate</option>
+                </select>
+            </div>
+
+            <div class="dob-group">
+                <label for="dob">Date of Birth</label><br>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <input type="submit" value="REGISTER NOW">
+        </form>
+    </div>
+
+    <!-- Include XLSX.js for Excel operations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <script>
+        const formContainer = document.querySelector('.form-container');
+        const form = document.getElementById('registration-form');
+
+        // Smooth animation on form load
+        window.addEventListener('load', () => {
+            formContainer.classList.add('appear');
+        });
+
+        // Function to load the existing Excel data from localStorage
+        function loadExcelData() {
+            const existingData = localStorage.getItem('excelFile');
+            return existingData ? XLSX.read(existingData, {type: 'binary'}) : null;
+        }
+
+        // Function to save Excel file to localStorage as a binary string
+        function saveExcelFile(wb) {
+            const wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
+            localStorage.setItem('excelFile', wbout);
+        }
+
+        // Function to convert a string to a binary array
+        function s2ab(s) {
+            const buf = new ArrayBuffer(s.length);
+            const view = new Uint8Array(buf);
+            for (let i = 0; i !== s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+
+        // Function to append new registration data to the existing Excel sheet
+        function appendDataToSheet(ws, newData) {
+            const sheetData = XLSX.utils.sheet_to_json(ws, {header: 1}); // Convert sheet to JSON array
+            sheetData.push(newData); // Append new data
+
+            // Convert the updated array back to a sheet
+            const newWs = XLSX.utils.aoa_to_sheet(sheetData);
+            return newWs;
+        }
+
+        // Function to save form data and append to the Excel file
+        function saveFormDataAndAppend() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const city = document.getElementById('city').value;
+            const discipline = document.getElementById('discipline').value;
+            const program = document.getElementById('program').value;
+            const dob = document.getElementById('dob').value;
+
+            const newData = [name, email, phone, city, discipline, program, dob]; // New data to append
+
+            // Load existing Excel data from localStorage
+            let wb = loadExcelData();
+            if (!wb) {
+                // Create a new workbook if not found
+                wb = XLSX.utils.book_new();
+                const ws = XLSX.utils.aoa_to_sheet([["Name", "Email", "Phone", "City & State", "Discipline", "Program", "Date of Birth"]]); // Headers
+                XLSX.utils.book_append_sheet(wb, ws, "Registration Data");
+            }
+
+            const ws = wb.Sheets["Registration Data"];
+            const updatedWs = appendDataToSheet(ws, newData); // Append new data to sheet
+
+            // Update the workbook with the modified sheet
+            wb.Sheets["Registration Data"] = updatedWs;
+
+            // Save the updated workbook to localStorage
+            saveExcelFile(wb);
+
+            // Export the updated file to user
+            XLSX.writeFile(wb, "Registration_Data.xlsx");
+        }
+
+        // Attach event listener to the form submit button
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            saveFormDataAndAppend(); // Save form data and append it to the same Excel sheet
+        });
+    </script>
+</body>
+</html>

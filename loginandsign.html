@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup Form</title>
+    
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #858286;
+}
+
+.container {
+    width: 400px;
+    height: 500px;
+    position: relative;
+}
+
+.form-box {
+    width: 100%;
+    height: 100%;
+    background: rgb(17, 174, 182);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(24, 129, 160, 0.1);
+    overflow: hidden;
+}
+
+.button-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.toggle-btn {
+    width: 50%;
+    padding: 10px 0;
+    cursor: pointer;
+    background-color: #f7f7f7;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    outline: none;
+}
+
+.input-group {
+    display: none;
+    flex-direction: column;
+}
+
+.input-group.active {
+    display: flex;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #17caca;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.submit-btn:hover {
+    background-color: #0a1617;
+}
+
+</style>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <div class="button-box">
+                <button type="button" class="toggle-btn" onclick="login()">Login</button>
+                <button type="button" class="toggle-btn" onclick="signup()">Sign Up</button>
+            </div>
+
+            <!-- Success Message -->
+            <div id="success-message" class="success-message"></div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="input-group" onsubmit="submitForm(event, 'login')">
+                <input type="text" class="input-field" placeholder="Username" required>
+                <input type="password" class="input-field" placeholder="Password" required>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+
+            <!-- Sign-up Form -->
+            <form id="signup-form" class="input-group" onsubmit="submitForm(event, 'signup')">
+                <input type="text" class="input-field" placeholder="Username" required>
+                <input type="email" class="input-field" placeholder="Email" required>
+                <input type="password" class="input-field" placeholder="Password" required>
+                <input type="password" class="input-field" placeholder="Confirm Password" required>
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+    <script>
+        // Function to toggle between login and signup forms
+function login() {
+    document.getElementById("login-form").classList.add("active");
+    document.getElementById("signup-form").classList.remove("active");
+    document.getElementById("success-message").classList.remove("active");
+}
+
+function signup() {
+    document.getElementById("signup-form").classList.add("active");
+    document.getElementById("login-form").classList.remove("active");
+    document.getElementById("success-message").classList.remove("active");
+}
+
+// Function to show success message after form submission
+function submitForm(event, formType) {
+    event.preventDefault();  // Prevent the default form submission behavior
+
+    const successMessage = document.getElementById("success-message");
+    
+    if (formType === 'login') {
+        successMessage.innerText = "Login Successful!";
+    } else if (formType === 'signup') {
+        successMessage.innerText = "Sign Up Successful!";
+    }
+
+    // Show the success message
+    successMessage.classList.add("active");
+
+    // Clear form fields
+    const form = event.target;
+    form.reset();
+}
+
+
+    </script>
+</body>
+</html>

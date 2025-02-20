@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companies</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        .companies {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 50px auto;
+            column-gap: 50px;
+            row-gap: 40px;
+        }
+
+        .company {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #f7f9fc, #e5e9f0);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .company img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .company:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: linear-gradient(145deg, #044a72, #3b91c7);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .company:hover img {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 1200px) {
+            .companies {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .companies {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .companies {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .back-btn {
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(145deg, #cfd1df, #4a7df6);
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(145deg, #040508, #8a8fa7);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-btn:active {
+            background-color: #3749a5;
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="companies">
+        <div class="company"><img src="https://tse4.mm.bing.net/th?id=OIP.3rh6MXhO0ByFkUGakS_s-QHaEK&pid=Api&P=0&h=180" alt="Amazon"></div>
+        <div class="company"><img src="https://tse2.mm.bing.net/th?id=OIP.Y2Bf8heQpetteNSKsouvvgAAAA&pid=Api&P=0&h=180" alt="Google"></div>
+        <div class="company"><img src="https://tse4.mm.bing.net/th?id=OIP.a1lsvxk81vAMx9cuKupwsQHaHa&pid=Api&P=0&h=180" alt="Walmart"></div>
+        <div class="company"><img src="https://tse1.mm.bing.net/th?id=OIP.Qj2kCKT2kh-jzfmK7BmLCAAAAA&pid=Api&P=0&h=180" alt="Airtel"></div>
+        <div class="company"><img src="https://tse1.mm.bing.net/th?id=OIP.izqetvmTUJ8o_PQ1Ryg0TQHaHa&pid=Api&P=0&h=180" alt="Microsoft"></div>
+        <div class="company"><img src="https://tse4.mm.bing.net/th?id=OIP.CVzg2IDy3IaW5c5Ernu1MAHaDJ&pid=Api&P=0&h=180" alt="Virtusa"></div>
+        <div class="company"><img src="https://tse1.mm.bing.net/th?id=OIP.vebtfTPehuhKf7qv3RAZVQHaBj&pid=Api&P=0&h=180" alt="Qualcomm"></div>
+        <div class="company"><img src="https://tse1.mm.bing.net/th?id=OIP.tFM6864eXSPUTZIr5Aw4IAAAAA&pid=Api&P=0&h=180" alt="Tata"></div>
+        <div class="company"><img src="https://tse3.mm.bing.net/th?id=OIP.PCZxays4ZueHii2jlHzQXgHaB9&pid=Api&P=0&h=180" alt="Accenture"></div>
+        <div class="company"><img src="https://tse4.mm.bing.net/th?id=OIP.J9I9BLa6Fos0r3mHuBwPawHaBn&pid=Api&P=0&h=180" alt="Deloitte"></div>
+        <div class="company"><img src="https://tse3.mm.bing.net/th?id=OIP.oK8H0cEbL4RKoK5oc-qc-wHaCe&pid=Api&P=0&h=180" alt="HP"></div>
+        <div class="company"><img src="https://tse2.mm.bing.net/th?id=OIP.aCNLnOhRWPLlfRTQVDT9TQHaHa&pid=Api&P=0&h=180" alt="Jio"></div>
+    </div>
+
+    <div class="button-container">
+        <a href="mainweb.html" class="back-btn">Back to main</a>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const companies = document.querySelectorAll('.company');
+            companies.forEach((company, index) => {
+                setTimeout(() => {
+                    company.style.opacity = '1';
+                    company.style.transform = 'scale(1)';
+                }, index * 200); 
+            });
+        });
+    </script>
+</body>
+</html>

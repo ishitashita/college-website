@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Courses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1be0b2; /* Very light, soft cream */
+        }
+
+        header {
+            background-color: #3da8cb; /* Muted blue-grey */
+            color: #f3d5c0; /* Soft peach */
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #95cdd885; /* Warm ivory */
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft grey shadow */
+            margin-top: -10px;
+            margin-bottom: 10px;
+            max-height: 100%;
+        }
+
+        p,h1 {
+            color: #3e4a49; /* Soft, deep grey */
+            font-weight: 600;
+        }
+
+        .course {
+            margin: 15px 0;
+            padding: 15px;
+            border: 1px solid #e0e0e0; /* Light grey border */
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .course:hover {
+            background-color: #29b9f1; /* Light, calm grey on hover */
+        }
+
+        .dropdown {
+            margin-bottom: 20px;
+        }
+
+        .dropdown select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #c8d1d3; /* Soft muted grey-blue */
+            color: #070808; /* Muted blue-grey text */
+            outline: none;
+            background-color: #f9f9f9; /* Light background */
+        }
+
+        .dropdown select:hover {
+            background-color: #6acde3; /* Grey-blue hover */
+            color: #f3d5c0; /* Peach text on hover */
+        }
+
+        .dropdown select:focus {
+            background-color: #54889a; /* Muted blue-grey when selected */
+            color: #f3d5c0; /* Peach text when selected */
+            outline: none;
+            border-color: #b1d7e3; /* Match focus border to background */
+        }
+
+        .dropdown option {
+            color: #075771; /* Muted blue-grey text */
+            background-color: #fff9f0; /* Warm ivory */
+        }
+
+        .dropdown select option:checked {
+            background-color: #5c9eb4; /* Blue-grey selected option */
+            color: #f3d5c0; /* Peach selected option text */
+        }
+
+        .toggle-btn {
+            background-color: #14cfec; /* Cool blue-green */
+            color: #fefcfb; /* Very soft white */
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .toggle-btn:hover {
+            background-color: #627c85; /* Muted blue-grey on hover */
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Courses</h1>
+        <p>Explore your potential</p>
+    </header>
+    
+    <div class="container" id="course-container">
+        <div class="dropdown">
+            <label for="course-category">Filter by Category:</label>
+            <select id="course-category" onchange="filterCourses()">
+                <option value="all">All Courses</option>
+                <option value="computer-science">Computer Science</option>
+                <option value="business">Business</option>
+                <option value="design">Design</option>
+                <option value="data-science">Data Science</option>
+            </select>
+        </div>
+
+        <h2>Available Courses</h2>
+        <div id="courses-list"></div>
+    </div>
+
+    <script>
+        const courses = [
+            {
+                title: "Bachelor of Computer Science",
+                description: "Learn the fundamentals of computing and programming.",
+                details: "This course covers algorithms, data structures, software engineering, and web development.",
+                category: "computer-science"
+            },
+            {
+                title: "Bachelor of Business Administration",
+                description: "Understand the principles of business and management.",
+                details: "This course includes marketing, finance, human resources, and strategic management.",
+                category: "business"
+            },
+            {
+                title: "Bachelor of Arts in Graphic Design",
+                description: "Explore the world of visual communication and design.",
+                details: "This course focuses on typography, color theory, and digital design tools.",
+                category: "design"
+            },
+            {
+                title: "Bachelor of Science in Data Science",
+                description: "Learn how to analyze and interpret complex data.",
+                details: "This course covers statistical analysis, machine learning, and data visualization techniques.",
+                category: "data-science"
+            }
+        ];
+
+        const coursesList = document.getElementById('courses-list');
+
+        // Function to display courses based on selected category
+        function filterCourses() {
+            const selectedCategory = document.getElementById('course-category').value;
+            coursesList.innerHTML = ''; // Clear previous courses
+
+            courses.forEach((course) => {
+                if (selectedCategory === 'all' || course.category === selectedCategory) {
+                    const courseDiv = document.createElement('div');
+                    courseDiv.className = 'course';
+                    courseDiv.innerHTML = `
+                        <h3>${course.title}</h3>
+                        <p>${course.description}</p>
+                        <button class="toggle-btn" onclick="toggleDetails('${course.title}')">Show Details</button>
+                        <div id="${course.title}" class="hidden">
+                            <p>${course.details}</p>
+                        </div>
+                    `;
+                    coursesList.appendChild(courseDiv);
+                }
+            });
+        }
+
+        // Function to toggle course details visibility
+        function toggleDetails(title) {
+            const detailsDiv = document.getElementById(title);
+            detailsDiv.classList.toggle('hidden');
+            const button = detailsDiv.previousElementSibling; // Get the button before the details div
+            button.innerText = detailsDiv.classList.contains('hidden') ? 'Show Details' : 'Hide Details';
+        }
+
+        // Display all courses by default
+        filterCourses();
+    </script>
+</body>
+</html>

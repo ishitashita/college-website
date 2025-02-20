@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Cell</title>
+    <style>
+        /* Reset default margin and padding */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll if content exceeds */
+        }
+      
+        /* Container for the page content */
+        .place {
+            border: 10px solid black;
+            background-color: rgb(150, 150, 150);
+            height: 150vh; /* Height of the container (150% of viewport height) */
+            position: relative;
+            padding: 60px;
+            box-sizing: border-box; /* Ensure padding and border are included in width and height */
+        }
+
+        /* Logo Styling */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: auto;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
+        }
+
+        /* Main title styling */
+        h1 {
+            margin: 0;
+            font-size: 25vh; /* Font size scales based on viewport height */
+            letter-spacing: 0.5vw; /* Space between letters scales with viewport width */
+            text-align: center;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background: url('https://images-platform.99static.com/qaagdZMei-6bbu-Nns8fVToIBsA=/500x500/top/smart/99designs-contests-attachments/54/54477/attachment_54477469');
+            background-size: auto 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 8s linear infinite;
+            position: relative;
+            margin-top: 80px; /* Ensure space between the logo and title */
+        }
+
+        /* Text animation */
+        @keyframes shine {
+            from {
+                background-position: center 0;
+            }
+            to {
+                background-position: center 200%;
+            }
+        }
+
+        /* Placement Cell Container */
+        .placement-cell {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(5, 167, 156, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(4, 149, 165, 0.2);
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Heading inside the placement cell */
+        .placement-cell h2 {
+            margin-bottom: 10px;
+            color: #0e0d0d;
+        }
+
+        /* Paragraph inside the placement cell */
+        .placement-cell p {
+            color: #140f0f;
+            line-height: 2;
+        }
+
+        /* Button styling */
+        button {
+            background-color: gray;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #039ca4; /* Change color on hover */
+            transform: scale(1.1); /* Slightly grow on hover */
+        }
+
+        /* Link styling inside the button */
+        button a {
+            text-decoration: none;
+            color: inherit; /* Inherit color from the button */
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="place">
+        <!-- Logo at the top-left -->
+        <img src="https://images-platform.99static.com/qaagdZMei-6bbu-Nns8fVToIBsA=/500x500/top/smart/99designs-contests-attachments/54/54477/attachment_54477469" alt="Logo" class="logo">
+
+        <!-- Main Title with text animation -->
+        <h1>PLACEMENT CELL</h1>
+         
+        <!-- Placement Cell Information Section -->
+        <div class="placement-cell">
+            <h2>Welcome to the Placement Cell</h2>
+            <p>Our placement cell helps students secure internships and job placements in leading companies.</p>
+            <p>Join us to explore various opportunities and prepare for your career.</p>
+            <p>Contact us for more information!</p>
+            
+            <!-- Button linking to the placement page -->
+            <button>
+                <a href="plac.html" target="_blank">Go to Placement Page</a>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

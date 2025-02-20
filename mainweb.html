@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-logo {
+            height: 100px;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            padding: 0;
+            background-color: #0c0e0e;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-nav {
+            text-align: center;
+        }
+
+        .navbar-nav .nav-link {
+            color: #c6d3d7;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffffff;
+            background-color: #003b46;
+            border-radius: 4px;
+        }
+
+        /* Other styles omitted for brevity... */
+ /* Dropdown Menu Styling */
+ .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            float: left;
+            min-width: 160px;
+            padding: .5rem 0;
+            margin: 0;
+            font-size: 1rem;
+            text-align: left;
+            list-style: none;
+            background-color: #6ac6e0;
+            /* Match main navbar color */
+            color: #51575d;
+            /* Consistent text color */
+            border: 3px solid #a5d8e8;
+            /* Maintain the border color */
+            border-radius: .25rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Added shadow for dropdown */
+        }
+
+        /* Show dropdown on hover */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Dropdown Item Styling */
+        .dropdown-item {
+            padding: .5rem 1.5rem;
+            font-weight: 400;
+            color: #050606;
+            /* Consistent with menu text */
+            background-color: transparent;
+            border: 0;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            /* Smooth transitions */
+        }
+
+        /* Dropdown Item Hover Effect */
+        .dropdown-item:hover {
+            color: #ffffff;
+            /* White text on hover */
+            background-color: #a0c3ce;
+            /* Consistent hover background color */
+            border-radius: 4px;
+            /* Slightly rounded corners */
+        }
+
+
+
+
+        h1,
+        p {
+            height: 100px;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #0f0b0b;
+        }
+
+        p {
+            color: black;
+        }
+
+        .parallax-1 {
+            background-image: url('https://www.bethel.edu/undergrad/admissions/visit/virtual-campus-tour/images/clc-circle.jpg');
+        }
+
+        .btn {
+            background-color: #040a06;
+
+            justify-content: center;
+
+            text-align: center;
+
+        }
+
+        .btn :hover {
+
+            background-color: #5e848a;
+            /* Slightly darker green on hover */
+            transform: scale(1.1);
+
+
+        }
+
+        /* .content {
+        
+            height: 200px;
+            background-image:url('https://wallpapercave.com/wp/wp4362140.jpg');
+            text-align: center;
+            padding: 50px;
+        } */
+
+
+        /* @media (max-width: 768px) { */
+            /* .parallax {
+                background-attachment: scroll; */
+                /* Disable parallax effect for smaller screens */
+            /* }
+          
+
+        } */
+
+
+        @media (max-width: 768px) {
+    .parallax {
+        height: auto; /* Let content define height */
+        background-attachment: scroll; /* Disable parallax effect for smaller screens */
+    }
+
+    .parallax h1 {
+        font-size: 8vw; /* Increase size slightly for small screens */
+    }
+
+    .parallax p {
+        font-size: 4vw; /* Adjust paragraph font size */
+    }
+}
+
+@media (max-width: 576px) {
+    .parallax {
+        padding: 10px; /* Reduce padding for small screens */
+    }
+
+    .parallax h1 {
+        font-size: 10vw; /* Further increase size on smaller screens */
+    }
+
+    .parallax p {
+        font-size: 5vw;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+        .parallax h1 {
+            color: #09090b;
+            font-size: 70px;
+
+        }
+
+        .parallax p {
+            color: rgb(128, 186, 205);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .parallax {
+            height: 600px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            /* Responsive grid */
+            gap: 15px;
+            padding: 15px;
+        }
+    
+
+
+        .mainsection {
+            background-image: url('http://4.bp.blogspot.com/-PG2JgI-rPmM/UBuq_Tmv3jI/AAAAAAAAAx4/9apSQGQQghQ/s1600/backgrounds-3.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            box-sizing: border-box;
+            
+            /* Ensures full height coverage */
+        }
+
+        .gallerycontainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .subhead {
+            font-size: 28px;
+            margin-top: 30px;
+            font-weight: bold;
+            color: #0e0e0e;
+        }
+
+        .headings {
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #66a5ad;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            /* Responsive grid layout */
+            gap: 20px;
+            padding: 20px;
+            width:100%;
+            margin: 0 auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img.zoom:hover {
+            transform: scale(1.5);
+            /* Zoom effect on hover */
+        }
+
+        /* Medium screens (tablets and small laptops) */
+        @media (max-width: 768px) {
+            .mainsection{
+                min-height: 100vh;
+            }
+            .subhead {
+                font-size: 24px;
+                /* Reduce font size for smaller screens */
+            }
+
+            .headings {
+                font-size: 30px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr ;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+                /* Smaller columns for smaller screens */
+            }
+        }
+
+        /* Small screens (mobile devices) */
+        @media (max-width: 480px) {
+            .subhead {
+                font-size: 20px;
+            }
+
+            .headings {
+                font-size: 26px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr ;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+                /* Further reduce columns for mobile */
+                gap: 15px;
+                /* Reduce gap to fit smaller screens */
+                padding: 10px;
+                /* Reduce padding for mobile */
+            }
+
+            .gallery img {
+                border-radius: 3px;
+                /* Slightly smaller border-radius on mobile */
+            }
+        }
+
+
+
+        .mainsections {
+            background-color: #020c14;
+            padding: 20px;
+            margin-top: 5px;
+        }
+
+        .subheads,
+        .heading {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .testimonials {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.testimonial {
+    width: 30%;
+    background-color: #b9c5c896;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial img {
+    width: 100%;
+}
+
+.testimonial:hover {
+    transform: scale(1.05);
+}
+
+.para1 {
+    padding: 10px;
+    text-align: justify;
+    word-wrap: break-word; /* Ensures long words break and don't overflow */
+}
+
+/* Responsive Design Adjustments */
+
+/* For tablets and medium screens */
+@media (max-width: 768px) {
+    .testimonial {
+        width: 100%;
+    }
+    .testimonials {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    .testimonial img {
+        width: 100%;
+    }
+    .subheads {
+        font-size: 24px;
+    }
+    .heading {
+        font-size: 28px;
+    }
+    .para1 {
+        padding: 15px;
+        text-align: center; /* Adjust alignment for smaller screens */
+    }
+}
+
+/* For mobile and small screens */
+@media (max-width: 480px) {
+    .testimonial {
+        width: 100%;
+    }
+    .testimonial img {
+        width: 100%;
+    }
+    .subheads {
+        font-size: 20px;
+    }
+    .heading {
+        font-size: 24px;
+    }
+    .testimonials {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+    .para1 {
+        padding: 15px;
+        text-align: center;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 320px) {
+    .testimonial {
+        width: 95%;
+    }
+    .subheads {
+        font-size: 18px;
+    }
+    .heading {
+        font-size: 22px;
+    }
+    .para1 {
+        padding: 10px;
+        font-size: 14px; /* Adjust font size for better readability */
+        text-align: center;
+    }
+}
+
+.place {
+    border: 10px solid #2f3e46; /* Dark grey-blue */
+    background-color: #c2dfe3; /* Soft blue */
+    height: 100vh;
+    padding: 60px;
+    box-sizing: border-box;
+}
+
+.place h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 60px;
+    letter-spacing: 2vw;
+    text-align: center;
+    font-weight: bolder;
+    color: white;
+    background: url('https://images-platform.99static.com/qaagdZMei-6bbu-Nns8fVToIBsA=/500x500/top/smart/99designs-contests-attachments/54/54477/attachment_54477469');
+    background-size: auto 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 8s linear infinite;
+    position: relative;
+    margin-top: -50px;
+    padding-bottom: 100px;
+}
+
+@keyframes shine {
+    from {
+        background-position: center 0;
+    }
+    to {
+        background-position: center 200%;
+    }
+}
+
+.placement-cell {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    font-weight: bolder;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(17, 199, 202, 0.8); /* Soft turquoise */
+    padding: 50px;
+    border-radius: 10px;
+    width: 90%;
+    max-height: 300px;
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(56, 173, 169, 0.3); /* Lighter shadow */
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: -100px;
+    line-height: 2;
+}
+
+.placement-cell h2 {
+    margin: 0;
+    padding: 0;
+    margin-bottom: -10px;
+    color: #121414; /* Deep grey */
+}
+
+.placement-cell p {
+    color: #4d5057; /* Softer grey */
+    line-height: 1.5;
+}
+
+/* Button Styling */
+button {
+    background-color: #0a0b0b; /* Soft green */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    background-color: #14b3e4; /* Consistent hover background color */
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #9dd4de; /* Slightly darker green on hover */
+    transform: scale(1.1);
+}
+
+/* Link hover effect */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .place h1 {
+        font-size: 40px; /* Adjust heading size for smaller screens */
+        letter-spacing: 1vw;
+    }
+    
+    .placement-cell {
+        width: 95%; /* Slightly more width for smaller screens */
+        max-width: 100%; /* Ensures full width on smaller devices */
+        padding: 30px; /* Less padding for smaller screens */
+    }
+
+    button {
+        font-size: 14px; /* Smaller button size */
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .place h1 {
+        font-size: 32px; /* Further adjust heading for mobile */
+        letter-spacing: 1vw;
+    }
+
+    .placement-cell {
+        padding: 20px; /* More compact layout for small screens */
+        line-height: 1.5; /* Adjust line height for mobile */
+    }
+
+    button {
+        font-size: 12px; /* Smaller button for mobile */
+        padding: 6px 12px;
+    }
+}
+
+
+
+        /* Link hover effect */
+
+
+
+        /* body {
+            font-family:cursive;
+            margin: 0;
+            padding: 0;
+        } */
+/* 
+        .footer {
+            background-color: black;
+            padding: 20px;
+            width: 100%;
+            color: #c4dfe6;
+            box-sizing: border-box;
+        }
+
+        .containers {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 10px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 280px;
+            width: auto;
+        }
+
+        .footer-sect {
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .footer-sect a {
+            color: white;
+            margin-left: 20px;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .footer-sect a:hover {
+            color: #003b46;
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 25%;
+            height: 0;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .social-icon {
+            color: #f3f2f2;
+            margin: 0 10px;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            color: #ddd;
+        }
+
+        .footer-content {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #f3f2f2;
+            margin-top: 10px;
+        } */
+
+
+        .footer {
+    background-color: black;
+    padding: 40px 20px; /* Extra padding for better spacing */
+    width: 100%;
+    color: #c4dfe6;
+    box-sizing: border-box;
+}
+
+.containers {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Added side padding */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.footer-logo {
+    height: 150px; /* Reduced logo height for better layout */
+    width: auto;
+    margin-bottom: 20px; /* Space below logo */
+}
+
+.footer-sect {
+    display: inline-block;
+    margin: 10px 40px; /* More margin between sections */
+    vertical-align: top; /* Align sections better */
+}
+
+.footer-sect a {
+    color: white;
+    margin-left: 10px;
+    font-size: 18px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 10px; /* Space between links */
+}
+
+.footer-sect a:hover {
+    color: #003b46;
+}
+
+.map-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 25%;
+    height: 0;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.social-icon {
+    color: #f3f2f2;
+    margin: 0 15px; /* Increased margin for space between icons */
+    font-size: 24px; /* Increased icon size */
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: #ddd;
+}
+
+.footer-content {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.copyright {
+    font-size: 14px;
+    color: #f3f2f2;
+    margin-top: 15px; /* Space above copyright text */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-logo {
+        height: 120px;
+    }
+
+    .footer-sect {
+        display: block;
+        margin: 20px 0; /* Increased margin for better spacing */
+        text-align: center;
+    }
+
+    .footer-sect a {
+        font-size: 16px;
+        margin-left: 0;
+        display: block;
+    }
+
+    .social-icon {
+        font-size: 20px;
+        margin: 10px; /* Increased margin around icons for spacing */
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-logo {
+        height: 100px;
+    }
+
+    .footer-sect {
+        margin: 10px 0;
+    }
+
+    .social-icon {
+        font-size: 18px;
+    }
+
+    .copyright {
+        font-size: 12px;
+    }
+}
+
+
+
+
+
+        #collegeevent {
+            background-color: #040505;
+
+
+            margin-bottom: 2px;
+        }
+
+        #collegeevent h1 {
+
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-bottom: 2px;
+            font-size: 35px;
+            font-weight: bold;
+            position: relative;
+            top: -20px;
+        }
+
+        .container2 {
+            max-width: 100%;
+            max-height: 600px;
+
+            background: url('https://cdn.pixabay.com/photo/2016/11/23/15/48/audience-1853662_640.jpg');
+            margin: 0px;
+            margin-top: 0px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            padding: 20px;
+            background-color: white;
+            position: relative;
+
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.);
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container2 h2 {
+            color: rgb(255, 246, 246);
+            font-family: Arial, sans-serif;
+        }
+
+
+        #countdown-timer {
+            font-size: 2rem;
+            margin: 0px;
+            color: rgb(255, 255, 255);
+            font-weight: bolder;
+            margin-bottom: 10;
+
+        }
+
+        .event-details p {
+
+
+            color: rgb(255, 252, 252);
+
+            font-size: 20px;
+            font-weight: bolder;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer {
+            background-color: black;
+            padding: 20px;
+            width: 100%;
+            color: #c4dfe6;
+            box-sizing: border-box;
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 25%;
+            height: 0;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a href="#">
+                <img src="https://images-platform.99static.com/qaagdZMei-6bbu-Nns8fVToIBsA=/500x500/top/smart/99designs-contests-attachments/54/54477/attachment_54477469" class="header-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#">Academic Programs ▼</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Undergraduate</a>
+                            <a class="dropdown-item" href="#">Graduate</a>
+                            <a class="dropdown-item" href="#">Professional</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#">Research ▼</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Research Centers</a>
+                            <a class="dropdown-item" href="#">Publications</a>
+                            <a class="dropdown-item" href="#">Funding Opportunities</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#">About Us ▼</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Our Mission</a>
+                            <a class="dropdown-item" href="#">History</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#">Alumni ▼</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Alumni Network</a>
+                            <a class="dropdown-item" href="#">Alumni Events</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#">Contact Us ▼</a>
+                        <div class=" dropdown-menu">
+                            <a class="dropdown-item" href="#">Contact Form</a>
+                            <a class="dropdown-item" href="#">Phone Directory</a>
+                        </div>
+                    </li>
+                </ul>
+                <a href="login.html"><button style="margin-right:30px;">LOGIN</button></a>
+                <a href="registration2.html"><button style="margin-right:90px;">Register Now</button></a>
+            </div>
+        </nav>
+
+        <!-- Content section omitted for brevity... -->
+        <div class="parallax parallax-1">
+            <h1 style="margin: 0px;">Welcome to Albatross University</h1>
+            <p style="margin-top: 30px;">Where world-class faculty, innovative research, and dynamic students come together
+                to advance education and foster change in the world.</p>
+    
+        </div>
+    
+    
+    
+    
+        <!-- parallex wala yahan tk -->
+    
+    
+    
+    
+        <!-- our college wala  gallery content -->
+    
+        <div class="mainsection">
+            <div class="gallerycontainer">
+                <h4 class="subhead">ALBATROSS GALLERY</h4>
+                <h2 class="headings">Our College Gallery</h2>
+                <div class="gallery">
+                    <img src="https://i.ytimg.com/vi/yReEgAtMpo4/maxresdefault.jpg" class="zoom" alt="Gallery Image 1">
+                    <img src="https://i.ytimg.com/vi/ZAyAn9SpudY/maxresdefault.jpg" class="zoom" alt="Gallery Image 2">
+                    <img src="http://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2017/03/14/Pictures/performance-confluence-hindustan-college-cultural-students-enjoying_451e127c-088b-11e7-ba13-f6aef3964879.JPG"
+                        class="zoom" alt="Gallery Image 3">
+                    <img src="https://icdn.isrgrajan.com/in/2018/03/fashion-show.jpg" class="zoom" alt="Gallery Image 4">
+                    <img src="https://captionspost.com/wp-content/uploads/2022/11/College-Memories-Captions-For-Instagram.webp"
+                        class="zoom" alt="Gallery Image 5">
+                    <img src="https://i.pinimg.com/originals/36/d7/89/36d789da939e251eabe962fb000cdc8e.jpg" class="zoom"
+                        alt="Gallery Image 6">
+                    <img src="https://blog.stucred.com/wp-content/uploads/2019/07/Youthvibe.jpg" class="zoom"
+                        alt="Gallery Image 6" style="height: 150px;">
+                    <img src="https://stlinteractives.com/wp-content/uploads/2017/06/Event-Planning-STL-8.jpg" class="zoom"
+                        alt="Gallery Image 6" style="height: 150px;">
+                    <img src="https://www.yakubevents.com/assets/images/college_events/ce1.jpg" class="zoom"
+                        alt="Gallery Image 6" style="height: 150px;">
+                    <img src="https://hire4event.com/blogs/wp-content/uploads/2019/02/hire4event.com_-1.jpg" class="zoom"
+                        alt="Gallery Image 6" style="height: 150px;">
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    
+        <header id="collegeevent">
+            <h1>College Event Countdown</h1>
+        </header>
+    
+        <div class="container2">
+            <h2>Upcoming Event: Parmish Verma Concert</h2>
+            <div class="event-details">
+                <p>Date: October 25, 2024</p>
+                <p>Time: 10:00 AM - 4:00 PM</p>
+                <p>Venue: Exploratorium</p>
+    
+            </div>
+            <div class="timer" id="countdown-timer"></div>
+    
+        </div>
+    
+        <!-- our college wala  gallery content -->
+        <!-- testimonal content yaha se -->
+    
+    
+        <div>
+            <div class="mainsections" style="background-color: #020c14; padding: 20px;">
+                <div class="contain">
+                    <h4 class="subheads" style="color: #ffffff; text-align: center;">Testimonial</h4>
+                    <h2 class="heading" style="color: #ffffff; text-align: center;">What Parents Say About Our College</h2>
+                    <div class="testimonials"
+                        style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 20px;">
+                        <div class="testimonial"
+                            style=" margin: 10px; background-color: #1c2530; border-radius: 5px; padding: 15px;">
+                            <center><img src="https://c.stocksy.com/a/ZIC000/z9/47279.jpg" height="200px"
+                                    style="border-radius: 7px;"></center>
+                            <p style="color: #ffffff" class="para1">
+                                Contrary to popular belief. It has roots in a piece of classical Latin literature from 45
+                                BC, making it over 2000 years old. Richard, a Latin professor at Hampden-Sydney College.
+                            </p>
+                        </div>
+                        <div class="testimonial"
+                            style=" margin: 10px; background-color: #1c2530; border-radius: 5px; padding: 15px;">
+                            <center> <img
+                                    src="https://www.rochester.edu/parents/assets/img/2018-05-20_hajim_diploma_16_smaller.jpg"
+                                    height="200px" style="border-radius: 5px;"></center>
+                            <p style="color: #ffffff" class="para1">
+                                Contrary to popular belief. It has roots in a piece of classical Latin literature from 45
+                                BC, making it over 2000 years old. Richard, a Latin professor at Hampden-Sydney College.
+                            </p>
+                        </div>
+                        <div class="testimonial"
+                            style=" margin: 10px; background-color: #1c2530; border-radius: 5px; padding: 15px;">
+                            <center><img
+                                    src="http://4.bp.blogspot.com/-wT49lGH64U4/Ticc3rIqBSI/AAAAAAAADx4/3Kr13iw-Rvw/s1600/DSC05023.JPG"
+                                    height="200px" style="border-radius: 5px;"></center>
+                            <p style="color: #ffffff" class="para1">
+                                Contrary to popular belief. It has roots in a piece of classical Latin literature from 45
+                                BC, making it over 2000 years old. Richard, a Latin professor at Hampden-Sydney College.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        </div>
+    
+    
+    
+    
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <!-- testinonal content yaha tk -->
+    
+    
+        <div class="place">
+            <!-- Logo at the top-left -->
+    
+            <!-- Main Title with text animation -->
+            <h1>PLACEMENT CELL</h1>
+    
+            <!-- Placement Cell Information Section -->
+            <div class="placement-cell">
+                <h2>Welcome to the Placement Cell</h2>
+                <p>Our placement cell helps students secure internships and job placements in leading companies.</p>
+                <p>Join us to explore various opportunities and prepare for your career.</p>
+                <p>Contact us for more information!</p>
+    
+                <!-- Button linking to the placement page -->
+                <button>
+                    <a href="plac.html" target="_blank">Go to Placement Page</a>
+                </button>
+            </div>
+        </div>
+    
+    
+    
+    
+        <!-- addresss yahn se yahan  -->
+        <div class="footer">
+            <div class="containers">
+                <div class="footer-sect">
+                    <img class="footer-logo"
+                        src="https://images-platform.99static.com/qaagdZMei-6bbu-Nns8fVToIBsA=/500x500/top/smart/99designs-contests-attachments/54/54477/attachment_54477469"
+                        alt="Logo">
+                </div>
+                <br>
+                <div class="footer-sect">
+                    <address>186, 3rd floor, Business Building Ring Road, Near Google Mall,<br> Zone-II, Highway street,
+                        Bhopal, MP, 462011</address>
+                </div>
+                <br>
+                <div class="footer-sect">
+                    <img src="https://static.vecteezy.com/system/resources/previews/018/842/694/original/realistic-phone-call-button-hotline-and-call-center-icon-customer-support-service-3d-rendering-free-png.png"
+                        height="40px" alt="Phone"> 91+ 9690063407
+                </div>
+                <br>
+                <div class="footer-sect">
+                    <img src="https://1000logos.net/wp-content/uploads/2021/05/Gmail-logo.png" height="21px" alt="Email">
+                    anshikasharma5521@gmail.com
+                </div>
+                <br>
+    
+    
+                <div class="footer-sect" style="height: 40px; background-color: #66a5ad;">
+                    <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <br>
+                <div class="copyright">
+                    &copy; 2024 The President and Fellows of Albatrosse University. All Rights Reserved.
+                </div>
+    
+    
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.298425694643!2d77.43321287456168!3d23.23222510847336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c433594c6ffe9%3A0x51540440f5405ae4!2sGlobal%20organization%20pvt%20.ltd.!5e0!3m2!1sen!2sin!4v1725101461563!5m2!1sen!2sin"
+                        height="80px" width="50px"></iframe>
+                </div>
+    
+    
+            </div>
+        </div>
+    
+        <!-- adddress yahan tk -->
+    
+
+        <footer class="footer">
+            <p>&copy; 2023 University Name</p>
+        </footer>
+        <script>
+            // Set the date and time of the event
+            const eventDate = new Date("October 25, 2024 10:00:00").getTime();
+    
+            // Update the countdown every second
+            const countdownInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+    
+                // Time calculations for days, hours, minutes, and seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+                // Display the result in the countdown timer element
+                document.getElementById("countdown-timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s `;
+    
+                // If the countdown is over, display a message
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById("countdown-timer").innerHTML = "Event has started!";
+                }
+            }, 1000);
+        </script>
+    
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </div>
+</body>
+
+</html>
